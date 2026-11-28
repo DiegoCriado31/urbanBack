@@ -34,19 +34,19 @@ public class BlogController {
     }
 
     @PostMapping
-    @Operation(summary = "Crear un nuevo articulo (Solo ADMIN)", security = @SecurityRequirement(name = "bearerAuth"))
+    @Operation(summary = "Crear un nuevo articulo (Solo COMERCIAL)", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<BlogModel> crear(@RequestBody BlogModel blog) {
         return ResponseEntity.ok(blogService.crear(blog));
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Actualizar un articulo existente (Solo ADMIN)", security = @SecurityRequirement(name = "bearerAuth"))
+    @Operation(summary = "Actualizar un articulo existente (Solo COMERCIAL)", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<BlogModel> actualizar(@PathVariable Long id, @RequestBody BlogModel blog) {
         return ResponseEntity.ok(blogService.actualizar(id, blog));
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Eliminar un articulo (Solo ADMIN)", security = @SecurityRequirement(name = "bearerAuth"))
+    @Operation(summary = "Eliminar un articulo (Solo COMERCIAL)", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         blogService.eliminar(id);
         return ResponseEntity.noContent().build();
